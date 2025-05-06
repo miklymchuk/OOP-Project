@@ -1,7 +1,4 @@
-import org.example.Bike;
-import org.example.Truck;
-import org.example.Vehicle;
-import org.example.VehicleSystem;
+import org.example.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -56,5 +53,21 @@ public class VehicleSystemTest {
         VehicleSystem.addVehicleToMap(bb);
 
         Assertions.assertEquals(expected, VehicleSystem.vehicles);
+    }
+
+    @Test
+    public void testFilter() {
+        VehicleSystem.initVehicles();
+        List<Vehicle> a = new ArrayList<>();
+
+        Car ford = new Car("Ford", "medium", "large", false);
+        Car audi = new Car("Audi", "high", "medium", true);
+        VehicleSystem.addVehicleToMap(ford);
+        VehicleSystem.addVehicleToMap(audi);
+
+        Map<Vehicle, Double> expected = new HashMap<>();
+        expected.put(ford, ford.calculateCost());
+
+        Assertions.assertEquals(expected, VehicleSystem.filter(241));
     }
 }

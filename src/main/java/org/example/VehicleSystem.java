@@ -32,7 +32,7 @@ public class VehicleSystem {
         Scanner scanner = new Scanner(System.in);
 
 
-        if (key == 1) {
+        if (key % 10 == 1) {
             List<Vehicle> a = vehicles.get("car");
             List<Car> cars = new ArrayList<>();
 
@@ -42,18 +42,10 @@ public class VehicleSystem {
                 }
             }
 
-            int input = 0;
-            while (input < 1 || input > 4) {
-                System.out.println("""
-                        If you want to filter by maximum cost, enter 1
-                        If you want to filter by quality, enter 2
-                        If you want to filter by size, enter 3
-                        If you want to filter by electric cars, enter 4
-                        """);
-                input = scanner.nextInt();
-            }
+            key = key/= 10;
 
-            if (input == 1) {
+
+            if (key % 10 == 1) {
                 cars.sort(new Car.CostComparator());
 
                 int maxCost = scanner.nextInt();
@@ -61,7 +53,7 @@ public class VehicleSystem {
                         .filter(car -> car.calculateCost() < maxCost)
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
 
-            } else if (input == 2) {
+            } else if (key % 10 == 2) {
                 Collections.sort(cars);
                 String quality = "";
                 while (!((quality == "low") || (quality == "medium") || (quality == "high") || (quality == "perfect"))) {
@@ -72,7 +64,7 @@ public class VehicleSystem {
                 cars.stream()
                         .filter(car -> car.getQuality().equals(finalQuality))
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
-            } else if (input == 3) {
+            } else if (key % 10 == 3) {
                 Collections.sort(cars);
                 String size = "";
                 while (!((size == "small") || (size == "medium") || (size == "large"))) {
@@ -86,21 +78,20 @@ public class VehicleSystem {
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
             } else {
                 Collections.sort(cars);
-                System.out.println("""
-                        Enter 1 if you want an electric car
-                        Enter anything else if you don't want an electric car""");
-                input = scanner.nextInt();
+                key/= 10;
 
-                boolean electric = false;
-                if (input == 1) {
+                boolean electric;
+                if (key % 10 == 1) {
                     electric = true;
+                } else {
+                    electric = false;
                 }
 
                 cars.stream()
-                        .filter(Car::getElectric)
+                        .filter(car -> car.getElectric() == electric)
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
             }
-        } else if (key == 2) {
+        } else if (key % 10 == 2) {
 
         } else {
 
