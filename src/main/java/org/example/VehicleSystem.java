@@ -3,7 +3,7 @@ package org.example;
 import java.util.*;
 
 public class VehicleSystem {
-    public static Map<String, List<Vehicle>> vehicles;
+    public static Map<String, List<Vehicle>> vehicles = new HashMap<>();
 
     public static void initVehicles() {
         vehicles.put("car", new ArrayList<Vehicle>());
@@ -11,7 +11,7 @@ public class VehicleSystem {
         vehicles.put("bike", new ArrayList<Vehicle>());
     }
 
-    public void addVehicleToMap(Vehicle vehicle) {
+    public static void addVehicleToMap(Vehicle vehicle) {
         if (vehicle instanceof Car) {
             List<Vehicle> cars = vehicles.get("car");
             cars.add(vehicle);
@@ -27,7 +27,7 @@ public class VehicleSystem {
         }
     }
 
-    public Map<Vehicle, Double> filter(int key) {
+    public static Map<Vehicle, Double> filter(int key) {
         Map<Vehicle, Double> filteredVehicles = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -93,7 +93,7 @@ public class VehicleSystem {
 
                 boolean electric = false;
                 if (input == 1) {
-                    electric = true;    
+                    electric = true;
                 }
 
                 cars.stream()

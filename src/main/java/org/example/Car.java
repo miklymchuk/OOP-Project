@@ -19,7 +19,7 @@ public class Car extends Vehicle implements Pricing {
         switch (size) {
             case "small" -> cost*= 0.75;
             case "large" -> cost*= 1.25;
-            default -> cost*=1;
+            default -> cost*= 1;
         }
 
         switch (quality) {
