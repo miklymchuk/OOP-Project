@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Bike extends Vehicle implements Pricing {
-    Boolean isElectric;
+    boolean isElectric;
 
     public Bike(String model, String quality, Boolean isElectric) {
         super(model, quality);

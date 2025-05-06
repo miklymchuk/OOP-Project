@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Car extends Vehicle implements Pricing {
     String size;
-    Boolean isElectric;
+    boolean isElectric;
 
     public Car(String model, String quality, String size, Boolean isElectric) {
         super(model, quality);
