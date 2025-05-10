@@ -4,10 +4,10 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Car extends Vehicle implements Pricing {
-    String size;
+    Size size;
     boolean isElectric;
 
-    public Car(String model, String quality, String size, Boolean isElectric) {
+    public Car(String model, Quality quality, Size size, Boolean isElectric) {
         super(model, quality);
         this.size = size;
         this.isElectric = isElectric;
@@ -17,15 +17,15 @@ public class Car extends Vehicle implements Pricing {
         double cost = isElectric ? 200 : 150;
 
         switch (size) {
-            case "small" -> cost*= 0.75;
-            case "large" -> cost*= 1.25;
+            case SMALL -> cost*= 0.75;
+            case LARGE -> cost*= 1.25;
             default -> cost*= 1;
         }
 
         switch (quality) {
-            case "low" -> cost*= 0.6;
-            case "high" -> cost*= 1.2;
-            case "perfect" -> cost*= 1.5;
+            case LOW -> cost*= 0.6;
+            case HIGH -> cost*= 1.2;
+            case PERFECT -> cost*= 1.5;
             default -> cost*= 1;
         }
 
@@ -53,11 +53,11 @@ public class Car extends Vehicle implements Pricing {
                 "} " + super.toString();
     }
 
-    public String getSize() {
+    public Size getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 
@@ -67,6 +67,12 @@ public class Car extends Vehicle implements Pricing {
 
     public void setElectric(Boolean electric) {
         isElectric = electric;
+    }
+
+    public enum Size {
+        SMALL,
+        MEDIUM,
+        LARGE
     }
 
     public static class CostComparator implements Comparator<Car> {

@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Bike extends Vehicle implements Pricing {
     boolean isElectric;
 
-    public Bike(String model, String quality, Boolean isElectric) {
+    public Bike(String model, Quality quality, Boolean isElectric) {
         super(model, quality);
         this.isElectric = isElectric;
     }
@@ -16,9 +16,9 @@ public class Bike extends Vehicle implements Pricing {
         double cost = isElectric ? 100 : 80;
 
         switch (quality) {
-            case "low" -> cost*= 0.8;
-            case "high" -> cost*= 1.5;
-            case "perfect" -> cost*= 2;
+            case LOW -> cost*= 0.8;
+            case HIGH -> cost*= 1.5;
+            case PERFECT -> cost*= 2;
             default -> cost*= 1;
         }
 

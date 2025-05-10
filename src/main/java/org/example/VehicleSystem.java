@@ -59,7 +59,7 @@ public class VehicleSystem {
 
                 String finalQuality = quality;
                 cars.stream()
-                        .filter(car -> car.getQuality().equals(finalQuality))
+                        .filter(car -> finalQuality.equalsIgnoreCase(car.getQuality().name()))
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
             } else if (key % 10 == 3) {
                 Collections.sort(cars);
@@ -71,7 +71,7 @@ public class VehicleSystem {
 
                 String finalSize = size;
                 cars.stream()
-                        .filter(car -> car.getSize().equals(finalSize))
+                        .filter(car -> finalSize.equalsIgnoreCase(car.getSize().name()))
                         .forEach(car -> filteredVehicles.put(car, car.calculateCost()));
             } else {
                 Collections.sort(cars);
@@ -108,14 +108,14 @@ public class VehicleSystem {
                 Collections.sort(trucks);
 
                 String quality = "";
-                while (!((quality.equals("low")) || (quality.equals("medium")) || (quality.equals("high")) || (quality.equals("perfect")))) {
+                while (!((quality.equals("LOW")) || (quality.equals("medium")) || (quality.equals("high")) || (quality.equals("perfect")))) {
                     quality = scanner.nextLine();
                 }
 
                 String finalQuality = quality;
 
                 trucks.stream()
-                        .filter(truck -> truck.getQuality().equals(finalQuality))
+                        .filter(truck -> finalQuality.equalsIgnoreCase(truck.getQuality().name()))
                         .forEach(truck -> filteredVehicles.put(truck, truck.calculateCost()));
             } else {
                 Collections.sort(trucks);
@@ -127,7 +127,7 @@ public class VehicleSystem {
 
                 String finalSize = size;
                 trucks.stream()
-                        .filter(truck -> truck.getSize().equals(finalSize))
+                        .filter(truck -> finalSize.equalsIgnoreCase(truck.getSize().name()))
                         .forEach(truck -> filteredVehicles.put(truck, truck.calculateCost()));
             }
         } else {
@@ -157,7 +157,7 @@ public class VehicleSystem {
                 String finalQuality = quality;
 
                 bikes.stream()
-                        .filter(bike -> bike.getQuality().equals(finalQuality))
+                        .filter(bike -> finalQuality.equalsIgnoreCase(bike.getQuality().name()))
                         .forEach(bike -> filteredVehicles.put(bike, bike.calculateCost()));
             } else {
                 key /= 10;

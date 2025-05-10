@@ -4,9 +4,9 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Truck extends Vehicle implements Pricing {
-    String size;
+    TruckSize size;
 
-    public Truck(String model, String quality, String size) {
+    public Truck(String model, Quality quality, TruckSize size) {
         super(model, quality);
         this.size = size;
     }
@@ -15,15 +15,15 @@ public class Truck extends Vehicle implements Pricing {
         double cost = 250;
 
         switch (size) {
-            case "small" -> cost*= 0.6;
-            case "large" -> cost*= 1.5;
+            case SMALL -> cost*= 0.6;
+            case LARGE -> cost*= 1.5;
             default -> cost*=1;
         }
 
         switch (quality) {
-            case "low" -> cost*= 0.8;
-            case "high" -> cost*= 1.15;
-            case "perfect" -> cost*= 1.4;
+            case LOW -> cost*= 0.8;
+            case HIGH -> cost*= 1.15;
+            case PERFECT -> cost*= 1.4;
             default -> cost*= 1;
         }
 
@@ -50,12 +50,18 @@ public class Truck extends Vehicle implements Pricing {
                 "} " + super.toString();
     }
 
-    public String getSize() {
+    public TruckSize getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(TruckSize size) {
         this.size = size;
+    }
+
+    public enum TruckSize {
+        SMALL,
+        MEDIUM,
+        LARGE
     }
 
     public static class CostComparator implements Comparator<Truck> {

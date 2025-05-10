@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public abstract class Vehicle implements Comparable<Vehicle> {
     protected String model;
-    protected String quality;
+    protected Quality quality;
 
-    public Vehicle(String model, String quality) {
+    public Vehicle(String model, Quality quality) {
         this.model = model;
         this.quality = quality;
     }
@@ -36,11 +36,11 @@ public abstract class Vehicle implements Comparable<Vehicle> {
                 '}';
     }
 
-    public String getQuality() {
+    public Quality getQuality() {
         return quality;
     }
 
-    public void setQuality(String quality) {
+    public void setQuality(Quality quality) {
         this.quality = quality;
     }
 
@@ -50,5 +50,12 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public enum Quality {
+        LOW,
+        MEDIUM,
+        HIGH,
+        PERFECT
     }
 }

@@ -15,7 +15,7 @@ public class VehicleSystemTest {
         Map<String, List<Vehicle>> expected = new HashMap<>();
         List<Vehicle> a = new ArrayList<Vehicle>();
 
-        Truck chevy = new Truck("Chevrolet", "medium", "small");
+        Truck chevy = new Truck("Chevrolet", Vehicle.Quality.MEDIUM, Truck.TruckSize.LARGE);
         a.add(chevy);
 
         expected.put("car", new ArrayList<Vehicle>());
@@ -34,8 +34,8 @@ public class VehicleSystemTest {
         Map<String, List<Vehicle>> prepList = new HashMap<>();
         List<Vehicle> a = new ArrayList<>();
 
-        Bike aa = new Bike("A", "low", false);
-        Bike bb = new Bike("B", "perfect", true);
+        Bike aa = new Bike("A", Vehicle.Quality.LOW, false);
+        Bike bb = new Bike("B", Vehicle.Quality.PERFECT, true);
 
         a.add(aa);
 
@@ -60,8 +60,8 @@ public class VehicleSystemTest {
         VehicleSystem.initVehicles();
         List<Vehicle> a = new ArrayList<>();
 
-        Car ford = new Car("Ford", "medium", "large", false);
-        Car audi = new Car("Audi", "high", "medium", true);
+        Car ford = new Car("Ford", Vehicle.Quality.MEDIUM, Car.Size.LARGE, false);
+        Car audi = new Car("Audi", Vehicle.Quality.HIGH, Car.Size.MEDIUM, true);
         VehicleSystem.addVehicleToMap(ford);
         VehicleSystem.addVehicleToMap(audi);
 
